@@ -111,6 +111,10 @@ main {
   margin-bottom: 20px;
 }
 
+.title p {
+  text-decoration: underline;
+}
+
 .main-container {
   display: flex;
   justify-content: center;
@@ -153,17 +157,6 @@ main {
   display: none;
 }
 
-.collection {
-  display: flex;
-  flex-direction: column;
-  list-style-type: none;
-  background-color: #9dadba;
-  border-radius: 20px;
-  min-height: 250px;
-  height: auto;
-  min-width: 450px;
-}
-
 .collection-container {
   display: flex;
   justify-content: space-around;
@@ -172,7 +165,7 @@ main {
 }
 
 .collection img {
-  height: 20vh;
+  height: 50px;
   border-radius: 20px;
 }
 
@@ -204,11 +197,12 @@ main {
 }
 
 .blue-bar-end p {
+  position: relative;
+  top: 8px;
   font-size: 1.2rem;
   font-weight: 500;
   color: #fff;
   text-align: center;
-  margin-top: 8px;
 }
 
 footer {
@@ -220,4 +214,60 @@ footer {
   font-size: 1.2rem;
   color: #ebec62;
   margin-top: 50px;
+}
+
+.swiper {
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+.swiper-slide {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  background-color: #9dadba;
+  border-radius: 20px;
+  min-height: 250px;
+  height: auto;
+  min-width: 450px;
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: 20vh;
+  border-radius: 15px;
+  object-fit: cover;
+}
+
+/* Pagination container styling */
+.swiper-pagination {
+  position: absolute !important; /* Forcer le positionnement absolu */
+  bottom: 10px !important; /* Ajuster la position verticale */
+  left: 50% !important; /* Centrer horizontalement */
+  transform: translateX(-50%) !important; /* Correction de centrage */
+  z-index: 10 !important; /* Assurer que la pagination reste au-dessus */
+}
+
+/* Pagination bullet styling */
+.swiper-pagination-bullet {
+  width: 12px !important; /* Ajuster la taille des puces */
+  height: 12px !important;
+  margin: 0 5px !important; /* Espacement entre les puces */
+  background-color: #80c342 !important; /* Couleur par défaut des puces */
+  opacity: 0.7 !important;
+  transition: all 0.3s ease !important; /* Animation fluide */
+}
+
+.swiper-pagination-bullet-active {
+  width: 16px !important; /* Taille des puces actives */
+  height: 16px !important;
+  background-color: #ebec62 !important; /* Couleur des puces actives */
+  opacity: 1 !important;
+}
+
+/* Swiper container adjustment to avoid overlap */
+.swiper {
+  position: relative !important; /* Créer un contexte pour la pagination */
+  padding-bottom: 40px !important; /* Espace en bas pour la pagination */
 }

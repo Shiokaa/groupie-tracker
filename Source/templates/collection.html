@@ -5,7 +5,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/styles/collection.css">
+    <link rel="stylesheet" href="./static/styles/collection.css">
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <title>Collection</title>
 </head>
 
@@ -48,46 +50,38 @@
             <h1>
                 Bienvenue dans la collection Rick et Morty !
             </h1>
+            <p>Tous les personnages ne sont pas présents, n'héistez pas à les rechercher !</p>
         </div>
         <div class="main-container">
             <div class="main-header">
                 <button class="filters">Filtres (0)</button>
-                <div class="underline-container">
-                    <button class="page-1">Page 1</button>
-                    <div class="underline-page-1"></div>
-                </div>
-                <div class="underline-container">
-                    <button class="page-2">Page 2</button>
-                    <div class="underline-page-2"></div>
-                </div>
-                <div class="underline-container">
-                    <button class="page-3">Page 3</button>
-                    <div class="underline-page-3"></div>
-                </div>
-                <div class="underline-container">
-                    <button class="page-4">Page 4</button>
-                    <div class="underline-page-3"></div>
-                </div>
             </div>
-            {{range .Results}}
-            <div class="collection">
-                <div class="blue-bar"></div>
-                <div class="blue-bar"></div>
-                <div class="collection-container">
-                    <li><img src="{{.Images}}" alt="Image de {{.Name}}">
-                    </li>
-                    <div class="collection-details">
-                        <li>Nom : {{.Name}}</li>
-                        <li>Status : {{.Status}}</li>
-                        <li>Espece : {{.Species}}</li>
-                        <li>Genre : {{.Gender}}</li>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    {{range .Results}}
+                    <div class="swiper-slide">
+                        <div class="collection">
+                            <div class="blue-bar"></div>
+                            <div class="blue-bar"></div>
+                            <div class="collection-container">
+                                <li><img src="{{.Images}}" alt="Image de {{.Name}}">
+                                </li>
+                                <div class="collection-details">
+                                    <li>Nom : {{.Name}}</li>
+                                    <li>Status : {{.Status}}</li>
+                                    <li>Espèce : {{.Species}}</li>
+                                    <li>Genre : {{.Gender}}</li>
+                                </div>
+                            </div>
+                            <div class="blue-bar-end">
+                                <p>ID : {{.Id}}</p>
+                            </div>
+                        </div>
                     </div>
+                    {{end}}
                 </div>
-                <div class="blue-bar-end">
-                    <p>ID : {{.Id}}</p>
-                </div>
+                <div class="swiper-pagination"></div>
             </div>
-            {{end}}
         </div>
     </main>
     <footer>
@@ -98,8 +92,20 @@
             <p>All Rights Reserved | | Terms and Conditions Privacy Policy</p>
         </div>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 3,
+            spaceBetween: 30,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+        });
+    </script>
+    <script src="./static/script/search.js"></script>
 </body>
-<script src="./static/script/search-bar.js"></script>
 
 </html>
 {{end}}

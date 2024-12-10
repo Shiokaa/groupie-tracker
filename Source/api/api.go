@@ -55,7 +55,5 @@ func GetChar() Character {
 		return Character{}
 	}
 
-	fmt.Println(characters)
-
 	return characters
 }
