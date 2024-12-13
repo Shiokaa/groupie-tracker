@@ -220,6 +220,28 @@ main {
   text-align: center;
 }
 
+.form-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.form-buttons button {
+  padding: 5px 15px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  background: none;
+  color: #ebec62;
+  border: none;
+  width: 110px;
+}
+
+.form-buttons button:hover {
+  color: #80c342;
+}
+
 footer {
   display: flex;
   justify-content: space-between;

@@ -52,7 +52,7 @@ type Character struct {
 func GetCharacters() Character {
 	var allCharacters Character
 
-	for i := 1; i < 11; i++ {
+	for i := 1; i < 43; i++ {
 		pageNbr := strconv.Itoa(i)
 
 		var characters Character
