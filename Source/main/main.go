@@ -3,6 +3,7 @@ package main
 import (
 	"Groupie-Tracker/collection"
 	"Groupie-Tracker/home"
+	"Groupie-Tracker/research"
 	"Groupie-Tracker/templates"
 	"net/http"
 )
@@ -16,6 +17,8 @@ func main() {
 
 	home.HomeRouter()
 	collection.CollectionRouter()
+	research.ResearchRouter()
 
 	http.ListenAndServe(":8080", nil)
+
 }

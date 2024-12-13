@@ -1,0 +1,46 @@
+{{define "research"}}
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research</title>
+</head>
+
+<body>
+
+
+    {{range .Character.Results}}
+    {{if .GetById}}
+    <h1>Voici les éléments de l'ID {{.Id}}</h1>
+    {{end}}
+    {{if .GetByName}}
+    <h1>Voici les éléments du nom {{.Name}}</h1>
+    {{end}}
+    <p>ID: {{.Id}}</p>
+    <p>Name: {{.Name}}</p>
+    <p>Status: {{.Status}}</p>
+    <p>Species: {{.Species}}</p>
+    <p>Gender: {{.Gender}}</p>
+    <img src="{{.Images}}" alt="{{.Name}}">
+    {{end}}
+
+    {{range .Episode.Results}}
+    <p>ID: {{.Id}}</p>
+    <p>Name: {{.Name}}</p>
+    <p>Episodes: {{.Episode}}</p>
+    <p>Date: {{.Air_date}}</p>
+    {{end}}
+
+    {{range .Location.Results}}
+    <p>ID: {{.Id}}</p>
+    <p>Name: {{.Name}}</p>
+    <p>Type: {{.Type}}</p>
+    <p>Dimension: {{.Dimension}}</p>
+    {{end}}
+
+</body>
+
+</html>
+{{end}}

@@ -8,7 +8,9 @@ import (
 
 func collectionController(w http.ResponseWriter, r *http.Request) {
 
-	data := api.GetChar()
+	data := api.GetCharacters()
+
+	data.Results = data.Results[0:20]
 
 	templates.Temp.ExecuteTemplate(w, "collection", data)
 
