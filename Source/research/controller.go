@@ -14,6 +14,8 @@ type apiData struct {
 	Character api.Character
 	GetById   bool
 	GetByName bool
+	Id        string
+	Name      string
 }
 
 func researchController(w http.ResponseWriter, r *http.Request) {
@@ -25,7 +27,9 @@ func researchController(w http.ResponseWriter, r *http.Request) {
 
 	var data apiData
 
-	if len(input) == 1 {
+	_, err := strconv.Atoi(input)
+
+	if err == nil {
 
 		for _, elems := range episode.Results {
 			if strconv.Itoa(elems.Id) == input {
@@ -47,9 +51,13 @@ func researchController(w http.ResponseWriter, r *http.Request) {
 				break
 			}
 		}
+
 		data.GetById = true
 		data.GetByName = false
-	} else {
+		data.Id = input
+	}
+
+	if err != nil {
 
 		for _, elems := range episode.Results {
 			if strings.Contains(strings.ToLower(elems.Name), strings.ToLower(input)) {
@@ -73,6 +81,7 @@ func researchController(w http.ResponseWriter, r *http.Request) {
 		}
 		data.GetById = false
 		data.GetByName = true
+		data.Name = input
 	}
 
 	templates.Temp.ExecuteTemplate(w, "research", data)

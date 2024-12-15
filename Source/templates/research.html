@@ -11,13 +11,15 @@
 <body>
 
 
-    {{range .Character.Results}}
     {{if .GetById}}
-    <h1>Voici les éléments de l'ID {{.Id}}</h1>
+    <p>Voici votre recherche pour l'Id : {{.Id}}</p>
     {{end}}
     {{if .GetByName}}
-    <h1>Voici les éléments du nom {{.Name}}</h1>
+    <p>Voici votre recherche pour le Nom : {{.Name}}</p>
     {{end}}
+
+
+    {{range .Character.Results}}
     <p>ID: {{.Id}}</p>
     <p>Name: {{.Name}}</p>
     <p>Status: {{.Status}}</p>
