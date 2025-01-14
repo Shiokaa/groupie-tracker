@@ -1,18 +1,21 @@
-{{define "collection"}}
+{{define "research"}}
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./static/styles/collection.css">
-    <title>Collection</title>
+    <link rel="stylesheet" href="./static/styles/research.css">
+    <title>Research</title>
 </head>
 
 <body>
+
     <header>
         <div class="left-header-container">
-            <h2>Rick et Morty API</h2>
+            <a href="/home">
+                <h2>Rick et Morty API</h2>
+            </a>
         </div>
         <form action="/research">
             <div class="search-bar">
@@ -28,10 +31,7 @@
             <nav class="header-nav">
                 <ul class="header-ul">
                     <li class="home-link"><a href="/home">Accueil</a></li>
-                    <div class="underline-container">
-                        <li class="collection-link"><a href="/collection">Collection</a></li>
-                        <div class="underline"></div>
-                    </div>
+                    <li class="collection-link"><a href="/collection">Collection</a></li>
                     <li class="about-link"><a href="about.html">A propos</a></li>
                     <a href="favorite.html"><svg fill="#bdc01b" height="18px" width="18px" version="1.1" id="Layer_1"
                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -45,52 +45,81 @@
             </nav>
         </div>
     </header>
+
     <main>
         <div class="title">
             <h1>
-                Bienvenue dans la collection Rick et Morty !
+                {{if .GetById}}
+                <p>Voici les données concernant l'id : {{.Id}}</p>
+                {{end}}
+                {{if .GetByName}}
+                <p>Voici les données concernant la recherche : {{.Name}}</p>
+                {{end}}
             </h1>
-            <p>Tous les personnages ne sont pas présents, n'hésitez pas à les rechercher !</p>
         </div>
         <div class="main-container">
-            <div class="main-header">
-                <button class="filters">Filtres (0)</button>
-            </div>
-            <div class="wrapper">
-                {{range .Results}}
-                <div class="collection">
-                    <div class="blue-bar"></div>
-                    <div class="blue-bar"></div>
-                    <div class="collection-container">
-                        <li><img src="{{.Images}}" alt="Image de {{.Name}}">
-                        </li>
-                        <div class="collection-details">
-                            <li>Nom : {{.Name}}</li>
-                            <li>Status : {{.Status}}</li>
-                            <li>Espèce : {{.Species}}</li>
-                            <li>Genre : {{.Gender}}</li>
-                        </div>
+            <div class="character">
+                <div class="character-title">
+                    {{if .GetCharacter}}
+                    <h2>Aucun personnage trouvé</h2>
+                    {{else}}
+                    <h2>Personnage :</h2>
+                    {{end}}
+                </div>
+                {{range .Character.Results}}
+                <div class="character-container">
+                    <div class="character-image">
+                        <img src="{{.Images}}" alt="{{.Name}}">
                     </div>
-                    <div class="blue-bar-end">
+                    <div class="character-details">
                         <p>ID : {{.Id}}</p>
+                        <p>Nom : {{.Name}}</p>
+                        <p>Status : {{.Status}}</p>
+                        <p>Espèce : {{.Species}}</p>
+                        <p>Genre : {{.Gender}}</p>
                     </div>
                 </div>
                 {{end}}
             </div>
+
+            <div class="episode">
+                <div class="episode-title">
+                    {{if .GetEpisode}}
+                    <h2>Aucun épisode trouvé</h2>
+                    {{else}}
+                    <h2>Episode :</h2>
+                    {{end}}
+                </div>
+                <div class="episode-container">
+                    {{range .Episode.Results}}
+                    <p>ID : {{.Id}}</p>
+                    <p>Nom : {{.Name}}</p>
+                    <p>Episodes : {{.Episode}}</p>
+                    <p>Date : {{.Air_date}}</p>
+                    {{end}}
+                </div>
+            </div>
+
+            <div class="location">
+                <div class="location-title">
+                    {{if .GetLocation}}
+                    <h2>Aucun lieu trouvé</h2>
+                    {{else}}
+                    <h2>Lieu :</h2>
+                    {{end}}
+                </div>
+                <div class="location-container">
+                    {{range .Location.Results}}
+                    <p>ID : {{.Id}}</p>
+                    <p>Nom : {{.Name}}</p>
+                    <p>Type : {{.Type}}</p>
+                    <p>Dimension : {{.Dimension}}</p>
+                    {{end}}
+                </div>
+            </div>
         </div>
-        <form action="/collection" class="form-buttons">
-            <button class="page-button" name="page" value="1" id="page-1">Page 1</button>
-            <button class="page-button" name="page" value="2" id="page-2">Page 2</button>
-            <button class="page-button" name="page" value="3" id="page-3">Page 3</button>
-            <button class="page-button" name="page" value="4" id="page-4">Page 4</button>
-            <button class="page-button" name="page" value="5" id="page-5">Page 5</button>
-            <button class="page-button" name="page" value="6" id="page-6">Page 6</button>
-            <button class="page-button" name="page" value="7" id="page-7">Page 7</button>
-            <button class="page-button" name="page" value="8" id="page-8">Page 8</button>
-            <button class="page-button" name="page" value="9" id="page-9">Page 9</button>
-            <button class="page-button" name="page" value="10" id="page-10">Page 10</button>
-        </form>
     </main>
+
     <footer>
         <div class="left-footer-container">
             <p>© 2024 - Rick et Morty API</p>
@@ -100,8 +129,6 @@
         </div>
     </footer>
 
-    <script src="./static/script/search.js"></script>
-    <script src="./static/script/collection.js"></script>
 </body>
 
 </html>

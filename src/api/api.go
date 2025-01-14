@@ -11,7 +11,7 @@ import (
 func initApi(apiUrl string, data interface{}) error {
 
 	httpClient := http.Client{
-		Timeout: time.Second * 2,
+		Timeout: time.Second * 5,
 	}
 
 	req, errReq := http.NewRequest(http.MethodGet, apiUrl, nil)
@@ -49,7 +49,7 @@ type Character struct {
 	} `json:"results"`
 }
 
-func GetCharacters() Character {
+func GetAllCharacters() Character {
 	var allCharacters Character
 
 	for i := 1; i < 43; i++ {
@@ -67,6 +67,28 @@ func GetCharacters() Character {
 	}
 
 	return allCharacters
+}
+
+func GetCharacters() Character {
+
+	var allCharacters Character
+
+	for i := 1; i < 11; i++ {
+		pageNbr := strconv.Itoa(i)
+
+		var characters Character
+
+		err := initApi("https://rickandmortyapi.com/api/character?page="+pageNbr, &characters)
+		if err != nil {
+			fmt.Println("Erreur lors de la récupération des personnages :", err)
+			return Character{}
+		}
+
+		allCharacters.Results = append(allCharacters.Results, characters.Results...)
+	}
+
+	return allCharacters
+
 }
 
 type Location struct {

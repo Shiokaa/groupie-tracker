@@ -9,20 +9,23 @@ import (
 )
 
 type apiData struct {
-	Episode   api.Episode
-	Location  api.Location
-	Character api.Character
-	GetById   bool
-	GetByName bool
-	Id        string
-	Name      string
+	Episode      api.Episode
+	Location     api.Location
+	Character    api.Character
+	GetById      bool
+	GetByName    bool
+	Id           string
+	Name         string
+	GetEpisode   bool
+	GetLocation  bool
+	GetCharacter bool
 }
 
 func researchController(w http.ResponseWriter, r *http.Request) {
 
 	episode := api.GetEpisode()
 	location := api.GetLocation()
-	character := api.GetCharacters()
+	character := api.GetAllCharacters()
 	input := r.FormValue("research")
 
 	var data apiData
@@ -82,6 +85,18 @@ func researchController(w http.ResponseWriter, r *http.Request) {
 		data.GetById = false
 		data.GetByName = true
 		data.Name = input
+	}
+
+	if len(data.Episode.Results) == 0 {
+		data.GetEpisode = true
+	}
+
+	if len(data.Location.Results) == 0 {
+		data.GetLocation = true
+	}
+
+	if len(data.Character.Results) == 0 {
+		data.GetCharacter = true
 	}
 
 	templates.Temp.ExecuteTemplate(w, "research", data)

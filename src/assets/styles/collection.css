@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   font-family: "Roboto", sans-serif;
   max-width: 100vw;
@@ -24,6 +25,10 @@ header {
   font-size: 2rem;
   font-weight: 700;
   color: #ebec62;
+}
+
+a {
+  text-decoration: none;
 }
 
 form {
@@ -106,6 +111,7 @@ main {
   align-items: center;
   flex-direction: column;
   margin: 0 auto;
+  min-height: 70vh;
 }
 
 .title {
@@ -146,6 +152,10 @@ main {
   width: 110px;
 }
 
+.main-container button:hover {
+  color: #80c342;
+}
+
 .underline-container {
   display: flex;
   justify-content: center;
@@ -182,6 +192,7 @@ main {
 .collection img {
   height: 18vh;
   border-radius: 20px;
+  margin: 0px 80px 0px 40px;
 }
 
 .collection-details {
@@ -190,6 +201,7 @@ main {
   gap: 10px;
   font-size: 1.2rem;
   color: #000;
+  width: 50%;
 }
 
 .blue-bar {
@@ -209,36 +221,59 @@ main {
   height: 40px;
   width: 100%;
   border-radius: 0 0 20px 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .blue-bar-end p {
-  position: relative;
-  top: 8px;
   font-size: 1.2rem;
   font-weight: 500;
   color: #fff;
-  text-align: center;
 }
 
-.form-buttons {
+.blue-bar-end button {
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-align: center;
+  width: 50%;
+  color: white;
+}
+
+.blue-bar-end button:hover {
+  color: #f7cbcb;
+}
+
+.page-button-container {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
   margin-top: 20px;
+  width: 100%;
 }
 
-.form-buttons button {
+.page-button-container a {
   padding: 5px 15px;
   font-size: 1.1rem;
   cursor: pointer;
   background: none;
   color: #ebec62;
   border: none;
-  width: 110px;
+  text-decoration: none;
 }
 
-.form-buttons button:hover {
+.next {
+  margin-right: 12px;
+}
+
+.page-button-container p {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #80c342;
+}
+
+.page-button-container a:hover {
   color: #80c342;
 }
 
@@ -251,4 +286,113 @@ footer {
   font-size: 1.2rem;
   color: #ebec62;
   margin-top: 50px;
+}
+
+.filter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 50%;
+  height: 33vh;
+  color: #ebec62;
+  font-size: 1.2rem;
+  transition: 0.5s ease-in-out;
+  background-color: #18365b;
+  position: absolute;
+  top: 0%;
+  left: 25%;
+  z-index: 2;
+  transform: translateY(-100%);
+  border-radius: 20px;
+  box-shadow: rgba(97, 131, 196, 0.35) 0px 5px 15px;
+  visibility: hidden;
+}
+
+.filter.active {
+  transform: translateY(0%);
+  transition: 0.5s ease-in-out;
+  visibility: visible;
+}
+
+.black-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  display: none;
+}
+
+.close {
+  margin-left: 800px;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+}
+
+.filter-title {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-bottom: 35px;
+}
+
+.filter-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.status {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.gender {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.status-details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.gender-details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.filter-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.filter button {
+  font-size: 1.3rem;
+  cursor: pointer;
+  background: none;
+  color: #ebec62;
+  border: none;
+}
+
+.filter button:hover {
+  color: #80c342;
 }

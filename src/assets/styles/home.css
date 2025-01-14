@@ -30,16 +30,14 @@ header img {
   margin-top: -20px;
 }
 
-.left-header-container {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
 .left-header-container h2 {
   font-size: 2rem;
   font-weight: 700;
-  color: #bdc01b;
+  color: #ebec62;
+}
+
+a {
+  text-decoration: none;
 }
 
 .header-ul {
@@ -55,7 +53,7 @@ header img {
 }
 
 .header-ul svg:hover {
-  fill: #3c9e49;
+  fill: #80c342;
 }
 
 .header-ul li {
@@ -65,11 +63,26 @@ header img {
 
 .header-ul li a {
   text-decoration: none;
-  color: #bdc01b;
+  color: #ebec62;
 }
 
 .header-ul li a:hover {
-  color: #3c9e49;
+  color: #80c342;
+}
+
+.underline-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.underline {
+  height: 4px;
+  width: 100%;
+  background-color: #80c342;
+  border-radius: 20px;
 }
 
 main {
@@ -87,15 +100,22 @@ main {
 main h1 {
   font-size: 4rem;
   font-weight: 700;
-  color: #ecf00e;
+  color: #ebec62;
   text-align: center;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .search-bar {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #feffb3;
+  background-color: #fdf8b9;
   border-radius: 50px;
   width: 90%;
 }
@@ -127,5 +147,5 @@ footer {
   margin: 0 40px;
   height: 11.8vh;
   font-size: 1.2rem;
-  color: #bdc01b;
+  color: #ebec62;
 }
