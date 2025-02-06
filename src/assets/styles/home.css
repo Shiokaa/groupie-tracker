@@ -53,6 +53,10 @@ a {
 }
 
 .header-ul svg:hover {
+  cursor: pointer;
+}
+
+.favorite-icon:hover {
   fill: #80c342;
 }
 
@@ -70,6 +74,48 @@ a {
   color: #80c342;
 }
 
+.account-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 7px;
+  position: absolute;
+  right: 2.3%;
+  top: 10%;
+  height: auto;
+  width: auto;
+  padding: 10px;
+  background-color: #18365b;
+  border-radius: 10px;
+  visibility: hidden;
+  transition: 0.3s ease;
+  opacity: 0;
+}
+
+.visible {
+  opacity: 1;
+  transition: 0.3s ease;
+  visibility: visible;
+}
+
+.account-menu a {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #ebec62;
+}
+
+.account-menu a:hover {
+  color: #80c342;
+}
+
+.account-menu span {
+  background-color: #ebec62;
+  height: 1px;
+  width: 80%;
+}
+
 .underline-container {
   display: flex;
   justify-content: center;
@@ -84,6 +130,8 @@ a {
   background-color: #80c342;
   border-radius: 20px;
 }
+
+/* ------------------main------------------ */
 
 main {
   display: flex;

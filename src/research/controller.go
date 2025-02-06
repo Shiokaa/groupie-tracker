@@ -1,8 +1,9 @@
 package research
 
 import (
-	"Groupie-Tracker/api"
-	"Groupie-Tracker/templates"
+	"GroupieTracker/api"
+	"GroupieTracker/login"
+	"GroupieTracker/templates"
 	"net/http"
 	"strconv"
 	"strings"
@@ -19,6 +20,7 @@ type apiData struct {
 	GetEpisode   bool
 	GetLocation  bool
 	GetCharacter bool
+	IsRegistered bool
 }
 
 func researchController(w http.ResponseWriter, r *http.Request) {
@@ -29,6 +31,7 @@ func researchController(w http.ResponseWriter, r *http.Request) {
 	input := r.FormValue("research")
 
 	var data apiData
+	data.IsRegistered = login.IsRegistered
 
 	_, err := strconv.Atoi(input)
 

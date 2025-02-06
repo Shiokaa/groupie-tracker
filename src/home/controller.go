@@ -1,10 +1,13 @@
 package home
 
 import (
-	"Groupie-Tracker/templates"
+	"GroupieTracker/login"
+	"GroupieTracker/templates"
 	"net/http"
 )
 
 func homeController(w http.ResponseWriter, r *http.Request) {
-	templates.Temp.ExecuteTemplate(w, "home", nil)
+	isRegistered := login.IsRegistered
+
+	templates.Temp.ExecuteTemplate(w, "home", isRegistered)
 }

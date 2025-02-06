@@ -1,16 +1,18 @@
 package collection
 
 import (
-	"Groupie-Tracker/api"
-	"Groupie-Tracker/templates"
+	"GroupieTracker/api"
+	"GroupieTracker/login"
+	"GroupieTracker/templates"
 	"fmt"
 	"net/http"
 	"strconv"
 )
 
 type DataStruct struct {
-	Characters api.Character
-	Filter     struct {
+	Characters   api.Character
+	IsRegistered bool
+	Filter       struct {
 		Status  string
 		Gender  string
 		Counter int
@@ -64,6 +66,8 @@ func collectionCut(pageNum int, data *DataStruct) {
 func collectionController(w http.ResponseWriter, r *http.Request) {
 
 	var data DataStruct
+	data.IsRegistered = login.IsRegistered
+
 	reset := r.FormValue("reset")
 	page := r.FormValue("page")
 	pageInt, pageErr := strconv.Atoi(page)

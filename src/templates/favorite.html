@@ -1,0 +1,26 @@
+{{define "favorite"}}
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favoris</title>
+</head>
+
+<body>
+
+    {{if .IsRegistered}}
+    <h1>Vous êtes connecté !</h1>
+    <h2>Bonjour {{.UserConnected}}</h2>
+    {{else}}
+    <h1>Vous n'êtes pas connecté !</h1>
+    {{end}}
+
+    {{.Name}}
+    {{.Id}}
+
+</body>
+
+</html>
+{{end}}
