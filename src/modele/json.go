@@ -7,10 +7,10 @@ import (
 )
 
 type User struct {
-	Id       int        `json:"id"`
-	Username string     `json:"username"`
-	Password string     `json:"password"`
-	Favorite []Favorite `json:"favorite"`
+	Id           int        `json:"id"`
+	Username     string     `json:"username"`
+	Password     string     `json:"password"`
+	Favorite     []Favorite `json:"favorite"`
 }
 
 type Favorite struct {
@@ -96,13 +96,13 @@ func GetUserById(id int) (User, error) {
 	return User{}, fmt.Errorf("Utilisateur non trouvé")
 }
 
-func FavoriteAdd(data Favorite, id int) error {
+func FavoriteAdd(data Favorite, idUser int) error {
 
 	file := JsonRead()
 
 	index := -1
 	for i, elem := range file {
-		if elem.Id == id {
+		if elem.Id == idUser {
 			index = i
 			break
 		}
@@ -125,13 +125,13 @@ func FavoriteAdd(data Favorite, id int) error {
 	return nil
 }
 
-func FavoriteDelete(id int, idFavorite int) error {
-	
+func FavoriteDelete(idUser int, idFavorite int) error {
+
 	file := JsonRead()
 
 	index := -1
 	for i, elem := range file {
-		if elem.Id == id {
+		if elem.Id == idUser {
 			index = i
 			break
 		}

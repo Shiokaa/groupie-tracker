@@ -31,7 +31,9 @@
             <nav class="header-nav">
                 <ul class="header-ul">
                     <li class="home-link"><a href="/home">Accueil</a></li>
-                    <li class="collection-link"><a href="/collection">Collection</a></li>
+                    <div class="underline-container">
+                        <li class="collection-link"><a href="/collection">Collection</a></li>
+                    </div>
                     <li class="about-link"><a href="about.html">A propos</a></li>
                     <li class="account-link"><svg width="20px" height="20px" viewBox="0 0 40 40" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
@@ -48,45 +50,50 @@
                                 stroke="#ebec62" stroke-width="3.33333" stroke-linecap="round"
                                 stroke-linejoin="round" />
                         </svg>
+                        <div class="account-menu">
+                            {{if .IsRegistered}}
+                            <a href="/login?disconnect=true">
+                                <h5>Déconnection</h5>
+                            </a>
+                            {{else}}
+                            <a href="/register">
+                                <h5>Inscription</h5>
+                            </a>
+                            <span></span>
+                            <a href="/login">
+                                <h5>Connexion</h5>
+                            </a>
+                            {{end}}
+                        </div>
+                    <li class="favorite-link"><a href="/favorite"><svg class="favorite-icon" fill="#ebec62"
+                                height="18px" width="18px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 455 455" xml:space="preserve">
+                                <path d="M326.632,10.346c-38.733,0-74.991,17.537-99.132,46.92c-24.141-29.383-60.399-46.92-99.132-46.92
+                   C57.586,10.346,0,67.931,0,138.714c0,55.426,33.049,119.535,98.23,190.546c50.162,54.649,104.729,96.96,120.257,108.626l9.01,6.769
+                   l9.009-6.768c15.53-11.667,70.099-53.979,120.26-108.625C421.95,258.251,455,194.141,455,138.714
+                   C455,67.931,397.414,10.346,326.632,10.346z" />
+                            </svg></a>
                     </li>
-                    <div class="account-menu">
-                        {{if .IsRegistered}}
-                        <a href="/register?disconnect=true">
-                            <h5>Déconnection</h5>
-                        </a>
-                        {{else}}
-                        <a href="/register">
-                            <h5>Inscription</h5>
-                        </a>
-                        <span></span>
-                        <a href="/login">
-                            <h5>Connexion</h5>
-                        </a>
-                        {{end}}
-                    </div>
-                    <a href="favorite.html"><svg fill="#bdc01b" height="18px" width="18px" version="1.1" id="Layer_1"
-                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                            viewBox="0 0 455 455" xml:space="preserve">
-                            <path d="M326.632,10.346c-38.733,0-74.991,17.537-99.132,46.92c-24.141-29.383-60.399-46.92-99.132-46.92
-                       C57.586,10.346,0,67.931,0,138.714c0,55.426,33.049,119.535,98.23,190.546c50.162,54.649,104.729,96.96,120.257,108.626l9.01,6.769
-                       l9.009-6.768c15.53-11.667,70.099-53.979,120.26-108.625C421.95,258.251,455,194.141,455,138.714
-                       C455,67.931,397.414,10.346,326.632,10.346z" />
-                        </svg></a>
                 </ul>
             </nav>
         </div>
     </header>
 
     <main>
+        {{if .IsEmpty}}
         <div class="title">
             <h1>
-                {{if .GetById}}
-                <p>Voici les données concernant l'id : {{.Id}}</p>
-                {{end}}
-                {{if .GetByName}}
-                <p>Voici les données concernant la recherche : {{.Name}}</p>
-                {{end}}
+                Aucun résultat trouvé
             </h1>
+        </div>
+        {{else}}
+        <div class="title">
+            {{if .GetById}}
+            <h1>Voici les données concernant l'id : {{.Id}}</h1>
+            {{end}}
+            {{if .GetByName}}
+            <h1>Voici les données concernant la recherche : {{.Name}}</h1>
+            {{end}}
         </div>
         <div class="main-container">
             <div class="character">
@@ -100,7 +107,7 @@
                 {{range .Character.Results}}
                 <div class="character-container">
                     <div class="character-image">
-                        <img src="{{.Images}}" alt="{{.Name}}">
+                        <a href="/details?id={{.Id}}"><img src="{{.Images}}" alt="Image de {{.Name}}"></a>
                     </div>
                     <div class="character-details">
                         <p>ID : {{.Id}}</p>
@@ -149,6 +156,7 @@
                 </div>
             </div>
         </div>
+        {{end}}
     </main>
 
     <footer>

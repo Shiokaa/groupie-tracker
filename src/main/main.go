@@ -2,6 +2,7 @@ package main
 
 import (
 	"GroupieTracker/collection"
+	"GroupieTracker/details"
 	"GroupieTracker/favorite"
 	"GroupieTracker/home"
 	"GroupieTracker/login"
@@ -24,5 +25,8 @@ func main() {
 	register.RegisterRouter()
 	favorite.FavoriteRouter()
 	login.LoginRouter()
-	http.ListenAndServe(":8080", nil)
+	details.DetailsRouter()
+
+	http.ListenAndServe(":3000", nil)
+
 }

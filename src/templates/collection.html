@@ -94,7 +94,7 @@
                         </svg>
                         <div class="account-menu">
                             {{if .IsRegistered}}
-                            <a href="/register?disconnect=true">
+                            <a href="/login?disconnect=true">
                                 <h5>Déconnection</h5>
                             </a>
                             {{else}}
@@ -137,7 +137,7 @@
                     <div class="blue-bar"></div>
                     <div class="blue-bar"></div>
                     <div class="collection-container">
-                        <img src="{{.Images}}" alt="Image de {{.Name}}">
+                        <a href="/details?id={{.Id}}"><img src="{{.Images}}" alt="Image de {{.Name}}"></a>
                         <div class="collection-details">
                             <li>Nom : {{.Name}}</li>
                             <li>Status : {{.Status}}</li>
@@ -147,7 +147,7 @@
                     </div>
                     <div class="blue-bar-end">
                         <p>ID : {{.Id}}</p>
-                        <a href="/favorite/traitement?name={{.Name}}&id={{.Id}}">Ajouter aux favoris</a>
+                        <a href="/favorite/traitement?id={{.Id}}">Ajouter aux favoris</a>
                     </div>
                 </div>
                 {{end}}

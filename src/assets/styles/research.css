@@ -10,24 +10,16 @@ body {
   background: center/cover no-repeat url("../img/home-background.jpg");
   background-color: rgba(0, 0, 0, 0.5); /* Adjust the opacity here */
   background-blend-mode: darken; /* Blend the background image with the color */
+  overflow: hidden;
 }
 
 header {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  margin: 0 40px;
   margin-top: 25px;
   height: 10vh;
-}
-
-header img {
-  width: 200px;
-  height: 200px;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  margin-top: -20px;
+  width: 100%;
 }
 
 .left-header-container h2 {
@@ -145,7 +137,7 @@ form {
   background-color: #fdf8b9;
   border-radius: 50px;
   width: 40%;
-  transform: translateX(5%);
+  transform: translateX(10%);
 }
 
 .search-bar input {
@@ -223,11 +215,19 @@ main {
 img {
   height: 18vh;
   border-radius: 20px;
+  transition: ease-in-out 0.3s;
+}
+
+img:hover {
+  transition: ease-in-out 0.3s;
+  transform: scale(1.1);
 }
 
 h2 {
   margin-bottom: 20px;
 }
+
+/* ------------------footer------------------ */
 
 footer {
   display: flex;

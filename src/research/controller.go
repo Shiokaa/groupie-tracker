@@ -21,6 +21,7 @@ type apiData struct {
 	GetLocation  bool
 	GetCharacter bool
 	IsRegistered bool
+	IsEmpty      bool
 }
 
 func researchController(w http.ResponseWriter, r *http.Request) {
@@ -33,6 +34,18 @@ func researchController(w http.ResponseWriter, r *http.Request) {
 	var data apiData
 	data.IsRegistered = login.IsRegistered
 
+	if input == "" {
+		data.IsRegistered = login.IsRegistered
+		data.IsEmpty = true
+		templates.Temp.ExecuteTemplate(w, "research", data)
+	}
+
+	researchCharacter(input, &data, episode, location, character)
+
+	templates.Temp.ExecuteTemplate(w, "research", data)
+}
+
+func researchCharacter(input string, data *apiData, episode api.Episode, location api.Location, character api.Character) {
 	_, err := strconv.Atoi(input)
 
 	if err == nil {
@@ -101,6 +114,4 @@ func researchController(w http.ResponseWriter, r *http.Request) {
 	if len(data.Character.Results) == 0 {
 		data.GetCharacter = true
 	}
-
-	templates.Temp.ExecuteTemplate(w, "research", data)
 }

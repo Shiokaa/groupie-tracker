@@ -1,12 +1,12 @@
-{{define "favorite"}}
+{{define "details"}}
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Favoris</title>
-    <link rel="stylesheet" href="./static/styles/favorite.css">
+    <title>Details</title>
+    <link rel="stylesheet" href="./static/styles/details.css">
 </head>
 
 <body>
@@ -80,52 +80,34 @@
         </div>
     </header>
 
-    {{if .IsRegistered}}
     <main>
+        {{if .IsEmpty}}
         <div class="title">
-            <h1>
-                Bienvenue <span>{{.UserConnected}}</span> sur la page des favoris !
-            </h1>
-        </div>
-        {{if .NoFavorite}}
-        <div class="no-favorite">
-            <h2>Vous n'avez pas de favoris pour le moment !</h2>
+            <h1>Aucune donnée trouvée</h1>
         </div>
         {{else}}
-        <div class="main-container">
-            <div class="wrapper">
-                {{range .Favorite}}
-                <div class="collection">
-                    <div class="blue-bar"></div>
-                    <div class="blue-bar"></div>
-                    <div class="collection-container">
-                        <a href="/details?id={{.Id}}"><img src="{{.Images}}" alt="Image de {{.Name}}"></a>
-                        <div class="collection-details">
-                            <li>Nom : {{.Name}}</li>
-                            <li>Status : {{.Status}}</li>
-                            <li>Espèce : {{.Species}}</li>
-                            <li>Genre : {{.Gender}}</li>
-                        </div>
-                    </div>
-                    <div class="blue-bar-end">
-                        <p>ID : {{.Id}}</p>
-                        <a href="/favorite/traitement?id={{.Id}}&delete=yes">Enlever des favoris</a>
-                    </div>
-                </div>
-                {{end}}
+        <div class="title">
+            <h1>Bienvenue sur la page des détails de {{.Character.Name}} !</h1>
+        </div>
+        <div class="details-container">
+            <div class="details-image-container">
+                <img src="{{.Character.Images}}" alt="{{.Character.Name}}">
             </div>
-        </div>
-        {{end}}
+            <div class="details-text-container">
+                <p>Id : {{.Character.Id}}</p>
+                <p>Nom : {{.Character.Name}}</p>
+                <p>Genre : {{.Character.Gender}}</p>
+                <p>Status : {{.Character.Status}}</p>
+                <p>Espece : {{.Character.Species}}</p>
+                <p>Type : {{.Character.Type}}</p>
+                <p>Origine : {{.Character.Origin.Name}}</p>
+                <p>Localisation : {{.Character.Location.Name}}</p>
+                </p>
+                <p>Création : {{.Character.Created}}</p>
+            </div>
+            {{end}}
     </main>
-    {{else}}
-    <main>
-        <div class="title-2">
-            <h1>
-                Vous n'êtes pas connecté, veuillez vous connecter pour accéder à vos favoris !
-            </h1>
-        </div>
-    </main>
-    {{end}}
+
 
     <footer>
         <div class="left-footer-container">

@@ -91,6 +91,36 @@ func GetCharacters() Character {
 
 }
 
+type SingleCharacter struct {
+	Id      int    `json:"id"`
+	Name    string `json:"name"`
+	Status  string `json:"status"`
+	Species string `json:"species"`
+	Type    string `json:"type"`
+	Gender  string `json:"gender"`
+	Images  string `json:"image"`
+	Origin  struct {
+		Name string `json:"name"`
+	} `json:"origin"`
+	Location struct {
+		Name string `json:"name"`
+	} `json:"location"`
+	Created string `json:"created"`
+}
+
+func GetCharacterById(id string) SingleCharacter {
+
+	var character SingleCharacter
+
+	err := initApi("https://rickandmortyapi.com/api/character/"+id, &character)
+	if err != nil {
+		fmt.Println("Erreur lors de la récupération du personnage :", err)
+		return SingleCharacter{}
+	}
+
+	return character
+}
+
 type Location struct {
 	Results []struct {
 		Id        int    `json:"id"`
