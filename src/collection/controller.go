@@ -118,6 +118,10 @@ func collectionController(w http.ResponseWriter, r *http.Request) {
 		data.Characters = api.GetCharacters()
 	}
 
+	if data.Pagination.Page <= 0 {
+		data.Pagination.Page = 1
+	}
+
 	collectionCut(data.Pagination.Page, &data)
 	formatPagination(data.Pagination.Page, &data)
 

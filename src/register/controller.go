@@ -28,6 +28,11 @@ func registerController(w http.ResponseWriter, r *http.Request) {
 		data.Err = errMsg
 	}
 
+	if data.IsRegistered {
+		http.Redirect(w, r, "/home", http.StatusSeeOther)
+		return
+	}
+
 	templates.Temp.ExecuteTemplate(w, "register", data)
 }
 

@@ -36,6 +36,11 @@ func loginController(w http.ResponseWriter, r *http.Request) {
 		data.Err = getErrorMessage(errMsg)
 	}
 
+	if IsRegistered {
+		http.Redirect(w, r, "/home", http.StatusSeeOther)
+		return
+	}
+
 	templates.Temp.ExecuteTemplate(w, "login", data)
 }
 

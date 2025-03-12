@@ -1,0 +1,56 @@
+À Propos - Documentation du Projet Groupie Tracker
+
+Comment avez-vous décomposé le projet ? Quelles ont été les phases clés ?
+
+1. Le projet a été décomposé en plusieurs phases structurées pour assurer une progression fluide et méthodique :
+
+     Choix de l'API et des endpoints : Recherche et validation d'une API REST respectant les contraintes du projet.
+
+     Conception des wireframes et maquettes : Réalisation des ébauches de l'interface utilisateur avec Figma.
+
+     Développement des fonctionnalités principales : Mise en place du backend avec Golang et récupération des données via l'API.
+
+     Implémentation des systèmes de recherche, filtres, pagination et favoris.
+
+     Tests et corrections : Vérification du bon fonctionnement du site, correction des bugs et optimisation des performances.
+
+     Finalisation et documentation : Rédaction du README et structuration de la documentation technique et utilisateur.
+
+Comment avez-vous réparti les tâches entre les membres de l’équipe ? Avez-vous utilisé une stratégie particulière pour organiser le travail ?
+
+2. Le projet étant réalisé en individuel, la gestion des tâches a été optimisée en suivant une approche agile personnelle :
+
+     Définition d’un backlog des fonctionnalités à implémenter.
+
+     Priorisation des tâches en fonction de leur complexité et dépendances.
+
+     Utilisation de GitHub pour le versioning et le suivi des évolutions.
+
+     Planification hebdomadaire avec des objectifs clairs pour chaque fonctionnalité.
+
+Comment avez-vous géré votre temps ? Avez-vous défini des priorités ?
+
+3. Une gestion rigoureuse du temps a été mise en place avec une approche en itérations courtes :
+
+     Définition de jalons hebdomadaires avec des tâches précises.
+
+     Priorisation des fonctionnalités obligatoires avant d’ajouter d’éventuels bonus.
+
+     Répartition du temps en phases : 70% développement, 20% tests et 10% documentation.
+
+     Ajustements réguliers en fonction des défis techniques rencontrés.
+
+Quelle stratégie avez-vous adoptée pour vous documenter ?
+
+4. Pour assurer une compréhension approfondie des technologies utilisées :
+
+     Consultation de la documentation officielle de Golang et des API REST.
+
+     Recherche sur des forums et plateformes comme Stack Overflow en cas de blocage.
+
+     Utilisation de Postman pour tester les endpoints et analyser les réponses JSON.
+
+     Rédaction de notes personnelles pour faciliter la réutilisation des connaissances acquises.
+
+Ce projet a été une opportunité d'apprentissage et de mise en pratique des bonnes pratiques de développement web avec Golang.
+

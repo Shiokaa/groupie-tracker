@@ -1,57 +1,15 @@
-{{define "collection"}}
+{{define "about"}}
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./static/styles/collection.css">
-    <title>Collection</title>
+    <title>A propos</title>
+    <link rel="stylesheet" href="./static/styles/about.css">
 </head>
 
 <body>
-
-    <div class="black-background"></div>
-
-    <form action="/collection" method="get" class="filter">
-        <svg class="close" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
-            fill="#ebec62">
-            <path class="close-path"
-                d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
-        </svg>
-        <div class="filter-title">
-            <h2>Les filtres :</h2>
-        </div>
-        <div class="filter-container">
-            <div class="status">
-                <h3>Status :</h3>
-                <div class="status-details">
-                    <p>Vivant </p><input type="radio" value="Alive" name="status" id="radio-button" {{if eq
-                        .Filter.Status "Alive" }}checked{{end}}>
-                    <p>Mort </p><input type="radio" value="Dead" name="status" id="radio-button" {{if eq
-                        .Filter.Status "Dead" }}checked{{end}}>
-                    <p>Inconnu </p><input type="radio" value="unknown" name="status" id="radio-button" {{if eq
-                        .Filter.Status "unknown" }}checked{{end}}>
-                </div>
-            </div>
-            <div class="gender">
-                <h3>Genre :</h3>
-                <div class="gender-details">
-                    <p>Homme </p><input type="radio" value="Male" name="gender" id="radio-button" {{if eq
-                        .Filter.Gender "Male" }}checked{{end}}>
-                    <p>Femme </p><input type="radio" value="Female" name="gender" id="radio-button" {{if eq
-                        .Filter.Gender "Female" }}checked{{end}}>
-                    <p>Inconnu </p><input type="radio" value="unknown" name="gender" id="radio-button" {{if eq
-                        .Filter.Gender "unknown" }}checked{{end}}>
-                </div>
-            </div>
-        </div>
-        <div class="filter-button">
-            <button type="submit" value="reset" name="reset">Réinitialiser les filtres</button>
-            <button type="submit">Valider</button>
-        </div>
-    </form>
-
     <header>
         <div class="left-header-container">
             <a href="/home">
@@ -72,11 +30,11 @@
             <nav class="header-nav">
                 <ul class="header-ul">
                     <li class="home-link"><a href="/home">Accueil</a></li>
+                    <li class="collection-link"><a href="/collection">Collection</a></li>
                     <div class="underline-container">
-                        <li class="collection-link"><a href="/collection">Collection</a></li>
+                        <li class="about-link"><a href="/about">A propos</a></li>
                         <div class="underline"></div>
                     </div>
-                    <li class="about-link"><a href="/about">A propos</a></li>
                     <li class="account-link"><svg width="20px" height="20px" viewBox="0 0 40 40" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <g opacity="0.12">
@@ -120,45 +78,103 @@
             </nav>
         </div>
     </header>
+
     <main>
-        <div class="title">
-            <h1>
-                Bienvenue dans la collection Rick et Morty !
-            </h1>
-            <p>Tous les personnages ne sont pas présents, n'hésitez pas à les rechercher !</p>
+        <div class="main-title">
+            <h2> À Propos - Documentation du Projet Groupie Tracker
+            </h2>
         </div>
         <div class="main-container">
-            <div class="main-header">
-                <button class="filters">Filtres ({{.Filter.Counter}})</button>
+            <div class="left-main-container">
+
+                <h4>Comment avez-vous décomposé le projet ? Quelles ont été les phases clés ?</h4>
+                <p>
+                    <br>
+                    1. Le projet a été décomposé en plusieurs phases structurées pour assurer une progression fluide et
+                    méthodique :
+                    <br>
+                    <br>
+                    Choix de l'API et des endpoints : Recherche et validation d'une API REST respectant les contraintes
+                    du
+                    projet.
+                    <br>
+                    Conception des wireframes et maquettes : Réalisation des ébauches de l'interface utilisateur avec
+                    Figma.
+                    <br>
+                    Développement des fonctionnalités principales : Mise en place du backend avec Golang et récupération
+                    des
+                    données via l'API.
+                    <br>
+                    Implémentation des systèmes de recherche, filtres, pagination et favoris.
+                    <br>
+                    Tests et corrections : Vérification du bon fonctionnement du site, correction des bugs et
+                    optimisation
+                    des performances.
+                    <br>
+                    Finalisation et documentation : Rédaction du README et structuration de la documentation technique
+                    et
+                    utilisateur.
+                    <br>
+                    <br>
+                </p>
+                <h4>Comment avez-vous réparti les tâches entre les membres de l’équipe ? Avez-vous utilisé une stratégie
+                    particulière pour organiser le travail ?</h4>
+                <br>
+                <p>
+                    2. Le projet étant réalisé en individuel, la gestion des tâches a été optimisée en suivant une
+                    approche
+                    agile personnelle :
+                    <br>
+                    <br>
+                    Définition d’un backlog des fonctionnalités à implémenter.
+                    <br>
+                    Priorisation des tâches en fonction de leur complexité et dépendances.
+                    <br>
+                    Utilisation de GitHub pour le versioning et le suivi des évolutions.
+                    <br>
+                    Planification hebdomadaire avec des objectifs clairs pour chaque fonctionnalité.
+                    <br>
+                </p>
             </div>
-            <div class="wrapper">
-                {{range .Characters.Results}}
-                <div class="collection">
-                    <div class="blue-bar"></div>
-                    <div class="blue-bar"></div>
-                    <div class="collection-container">
-                        <a href="/details?id={{.Id}}"><img src="{{.Images}}" alt="Image de {{.Name}}"></a>
-                        <div class="collection-details">
-                            <li>Nom : {{.Name}}</li>
-                            <li>Status : {{.Status}}</li>
-                            <li>Espèce : {{.Species}}</li>
-                            <li>Genre : {{.Gender}}</li>
-                        </div>
-                    </div>
-                    <div class="blue-bar-end">
-                        <p>ID : {{.Id}}</p>
-                        <a href="/favorite/traitement?id={{.Id}}">Ajouter aux favoris</a>
-                    </div>
-                </div>
-                {{end}}
+            <div class="right-main-container">
+                <h4>Comment avez-vous géré votre temps ? Avez-vous défini des priorités ?</h4>
+                <p>
+                    <br>
+                    3. Une gestion rigoureuse du temps a été mise en place avec une approche en itérations courtes :
+                    <br>
+                    <br>
+                    Définition de jalons hebdomadaires avec des tâches précises.
+                    <br>
+                    Priorisation des fonctionnalités obligatoires avant d’ajouter d’éventuels bonus.
+                    <br>
+                    Répartition du temps en phases : 70% développement, 20% tests et 10% documentation.
+                    <br>
+                    Ajustements réguliers en fonction des défis techniques rencontrés.
+                    <br>
+                    <br>
+                </p>
+                <h4>Quelle stratégie avez-vous adoptée pour vous documenter ?</h4>
+                <p>
+                    <br>
+                    4. Pour assurer une compréhension approfondie des technologies utilisées :
+                    <br>
+                    <br>
+                    Consultation de la documentation officielle de Golang et des API REST.
+                    <br>
+                    Recherche sur des forums et plateformes comme Stack Overflow en cas de blocage.
+                    <br>
+                    Utilisation de Postman pour tester les endpoints et analyser les réponses JSON.
+                    <br>
+                    Rédaction de notes personnelles pour faciliter la réutilisation des connaissances acquises.
+                    <br>
+                    <br>
+                    Ce projet a été une opportunité d'apprentissage et de mise en pratique des bonnes pratiques de
+                    développement web avec Golang.
+                </p>
             </div>
-        </div>
-        <div class="page-button-container">
-            <a class="page-button" href="{{.Pagination.Prev}}">Page précédente</a>
-            <p>Page {{.Pagination.Page}}</p>
-            <a class="page-button next" href="{{.Pagination.Next}}">Page suivante</a>
         </div>
     </main>
+
     <footer>
         <div class="left-footer-container">
             <p>© 2024 - Rick et Morty API</p>
@@ -167,11 +183,8 @@
             <p>All Rights Reserved | | Terms and Conditions Privacy Policy</p>
         </div>
     </footer>
-
-    <script src="./static/script/search.js"></script>
-    <script src="./static/script/collection.js"></script>
-    <script src="./static/script/account.js"></script>
 </body>
+<script src="./static/script/account.js"></script>
 
 </html>
 {{end}}

@@ -3,6 +3,15 @@
   "id": 0,
   "username": "tom",
   "password": "montoya",
-  "favorite": null
+  "favorite": [
+   {
+    "id": 2,
+    "name": "Morty Smith",
+    "status": "Alive",
+    "species": "Human",
+    "gender": "Male",
+    "image": "https://rickandmortyapi.com/api/character/avatar/2.jpeg"
+   }
+  ]
  }
 ]
